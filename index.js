@@ -1,7 +1,9 @@
-// $(window).ready(function() {
-//   console.log("ready")
-//   setTimeout(function() {
-//     console.log("reloading")
-//     window.location.reload()
-//   }, 1000);
-// })
+$(document).ready(function() {
+  $('.folder').click(function() {
+    $(this).toggleClass('opened');
+  });
+
+  setInterval(function() {
+    $('.folder:nth-child(2)').click();
+  }, 1500)
+})
