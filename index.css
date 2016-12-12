@@ -13,14 +13,19 @@ body {
   box-shadow: 0 4px 40px #70ac77;
 }
 
-.folder {
-  padding: 24px;
+section {
+  padding-top: 24px;
+  padding-bottom: 24px;
   box-shadow: inset 0 -1px #565a60;
   position: relative;
   text-indent: 1em;
 }
 
-.folder::before {
+.folder:not(.opened) .children {
+  display: none;
+}
+
+.folder > section::before {
   content: "\f105";
   font: normal normal normal 14px/1 FontAwesome;
   display: inline-block;
@@ -30,18 +35,49 @@ body {
   font-size: 1.5em;
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-13px);
-  transform-origin: 80% 58%;
+  top: 20px;
+  transform-origin: 55% 84%;
   transition: transform .1s;
 }
 
-.folder.opened::before {
+.folder.opened > section::before {
   transform: translateY(-13px) rotateZ(90deg);
 }
+
+.children {
+  padding-left: 24px;
+}
+
+.folder > section {
+  padding-left: 24px;
+}
+
+// .multi-level-accordion > section, .multi-level-accordion > .folder > section {
+//   padding-left: 24px;
+//   background-color: rgba(86, 90, 96, 1);
+// }
+
+// .children section {
+//   padding-left: 48px;
+//   background-color: rgba(86, 90, 96, .5);
+// }
+
+// .children section::before {
+//   padding-left: 24px;
+//   transform-origin: 75% 84%;
+// }
+
+// .children .children section {
+//   padding-left: 72px;
+//   background-color: rgba(86, 90, 96, .1);
+// }
+
+// .children .children section::before {
+//   padding-left: 48px;
+//   transform-origin: 85% 84%;
+// }
 
 a {
   color: white;
   text-decoration: none;
 }
-

@@ -9,18 +9,34 @@
   <body>
 
     <div class="multi-level-accordion">
+      <section>Nested 0</section>
       <div class="folder">
-        <a href="#">Group 1</a>
+        <section>Folder 0</section>
+        <div class="children">
+          <section><a href="#">Nested 1</a></section>
+          <section><a href="#">Nested 1</a></section>
+        </div>
       </div>
-      <div class="folder">
-        <a href="#">Group 2</a>
-      </div>
-      <div class="folder">
-        <a href="#">Group 3</a>
-      </div>
-      <div class="folder">
-        <a href="#">Group 4</a>
-
+      <div class="folder opened">
+        <section>Folder 0</section>
+        <div class="children">
+          <section><a href="#">Nested 1</a></section>
+          <div class="folder opened">
+            <section>Folder 1</section>
+            <div class="children">
+              <section>Nested 2</section>
+              <section>Nested 2</section>
+              <div class="folder opened">
+                <section>Nested 2</section>
+                <div class="children">
+                  <section>Nested 3</section>
+                  <section>Nested 3</section>
+                  <section>Nested 3</section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
