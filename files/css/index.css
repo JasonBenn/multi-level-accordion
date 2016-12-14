@@ -7,7 +7,7 @@ body {
   align-items: center;
 }
 
-.multi-level-accordion {
+.nested-accordion {
   width: 600px;
   background: #4d5158;
   box-shadow: 0 4px 40px #70ac77;
@@ -52,7 +52,7 @@ section {
   padding-left: 24px;
 }
 
-// .multi-level-accordion > section, .multi-level-accordion > .folder > section {
+// .nested-accordion > section, .nested-accordion > .folder > section {
 //   padding-left: 24px;
 //   background-color: rgba(86, 90, 96, 1);
 // }
