@@ -12,10 +12,15 @@
       },
       "properties": [
         {
-          "name": "structure",
-          "label": "Structure",
-          "tooltip": "Specify the structure, URLs, and labels of the accordion as JSON.",
-          "type": "text"
+          "name": "settings",
+          "label": "Settings",
+          "type": "group",
+          "properties": [{
+            "name": "structure",
+            "label": "Structure",
+            "tooltip": "Specify the structure, URLs, and labels of the accordion as JSON.",
+            "type": "text"
+          }]
         }
       ]
     }
