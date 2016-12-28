@@ -8,7 +8,7 @@ var configuration = "\
 2a1, Scoping, /scoping\n\
 2a2, Identifying Partners, /identifying-partners\n\
 2a3, Building Consensus, /building-consensus\n\
-2a4, Making Decisions, /making-decisions\n\
+2a4, Making Decisions\n\
 2a4a, Effectiveness of Anticipated Communications Options, /effectiveness\n\
 3, Legal Factors\n\
 4, Funding\n\
@@ -17,7 +17,7 @@ var configuration = "\
 
 
 var FOLDER_TEMPLATE = "\
-  <div class='folder opened' data-structure={{structure}}>\
+  <div class='folder' data-structure={{structure}}>\
     <section>{{label}}</section>\
     <div class='children'>\
     </div>\
@@ -60,6 +60,12 @@ function renderLine(line) {
 
 var $accordion = $('<div class="nested-accordion"></div>');
 
+function openToCurrentUrl(accordion) {
+  // use location.pathname
+  var $currentLink = $accordion.find("[href='" + "/effectiveness" + "']");
+  $currentLink.parentsUntil('.nested-accordion', '.folder').addClass('opened');
+}
+
 $(document).ready(function() {
 
   var lines = _.map(configuration.split("\n"), function(line) {
@@ -72,6 +78,7 @@ $(document).ready(function() {
   });
 
   _.each(lines, insertLine);
+  openToCurrentUrl($accordion)
   $('body').append($accordion);
 
   $('.folder').click(function(e) {
