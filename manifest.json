@@ -18,7 +18,7 @@
           "properties": [{
             "name": "structure",
             "label": "Structure",
-            "tooltip": "Specify the structure, URLs, and labels of the accordion as JSON.",
+            "tooltip": "Specify the structure, visible text, and (optionally) the URL for each line, separated by commas.",
             "type": "text"
           }]
         }
