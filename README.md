@@ -1,9 +1,10 @@
 Goals for today:
 
-- Put accordion on site
+x- Put accordion on site
 - Change colors to their scheme
 - change sublevel coloring
-- experiment with manifest settings
+x- experiment with manifest settings
+- automatically open accordion to url
 
 - Subpages are clearly delineated with different colors/shades as well as smaller and indented text
 - The page one is currently on is highlighted
