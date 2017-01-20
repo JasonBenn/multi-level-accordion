@@ -1,4 +1,8 @@
-Goals for today:
+Review checklist: https://dev.weebly.com/app-policy-review-checklist.html
+Element structure: https://dev.weebly.com/add-element-folders.html
+- What is editor_element.tpl/css?
+  - Ah, it's placeholder content when you drop it onto a page. I'll need it, then.
+- Don't set width on element.
 
 x- Put accordion on site
 - Change colors to their scheme
