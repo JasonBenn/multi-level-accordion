@@ -85,8 +85,9 @@
         $(this).find('.children').toggle();
         $(this).toggleClass('opened');
       });
-    };
+    }
   });
 
+  window.NestedAccordion = NestedAccordion;
   return NestedAccordion;
 })();

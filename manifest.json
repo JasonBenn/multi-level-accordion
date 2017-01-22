@@ -1,7 +1,7 @@
 {
   "manifest": "1",
   "client_id": "123456",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "elements": [{
     "name": "Nested Accordion",
     "path": "files",
