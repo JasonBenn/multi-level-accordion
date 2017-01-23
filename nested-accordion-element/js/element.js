@@ -24,7 +24,7 @@
         <i class='fa fa-angle-right folder-arrow' aria-hidden='true'></i>\
         {{label}}\
       </section>\
-      <div class='children'>\
+      <div class='children' style='display: none;'>\
       </div>\
     </div>"
 
@@ -64,9 +64,13 @@
   var $accordion = $('<div class="nested-accordion"></div>');
 
   function openToCurrentUrl(accordion) {
-    // use location.pathname
+    // TODO: use location.pathname
+    var $currentLink = $accordion.find("[href='" + "/identifying-partners" + "']");
+    $currentLink.closest('section').addClass('current');
     var $currentLink = $accordion.find("[href='" + "/effectiveness" + "']");
+    $currentLink.closest('section').addClass('current');
     $currentLink.parentsUntil('.nested-accordion', '.folder').addClass('opened');
+    $currentLink.parentsUntil('.nested-accordion', '.children').toggle();
   }
 
   var NestedAccordion = PlatformElement.extend({
@@ -74,10 +78,10 @@
       var lines = _.map(configuration.split("\n"), function(line) {
         var components = line.split(", ");
         var structure = components[0].trim();
-        var nesting = structure.length;
+        var nesting = structure.length - 1;
         return {
           structure: structure,
-          nesting: nesting - 1,
+          nesting: nesting,
           label: components[1],
           url: components[2]
         }
@@ -89,7 +93,7 @@
 
       $('.folder').click(function(e) {
         e.stopPropagation();
-        $(this).find('.children').toggle();
+        $(this).children('.children').slideToggle();
         $(this).toggleClass('opened');
       });
     }
