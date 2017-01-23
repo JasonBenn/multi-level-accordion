@@ -15,17 +15,21 @@
     3, Legal Factors\n\
     4, Funding\n\
     4a, EPA Drinking Water State Revolving Loan Fund, /epa-load-fund\n\
-    4b, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act"
+    4b, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act\n\
+    5, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act"
 
   var FOLDER_TEMPLATE = "\
     <div class='folder' data-structure={{structure}}>\
-      <section>{{label}}</section>\
+      <section class='folder-label nesting-{{nesting}}'>\
+        <i class='fa fa-angle-right folder-arrow' aria-hidden='true'></i>\
+        {{label}}\
+      </section>\
       <div class='children'>\
       </div>\
     </div>"
 
   var LINK_TEMPLATE = "\
-    <section {{structure}}><a href='{{url}}'>{{label}}</a></section>"
+    <section class='nesting-{{nesting}}' {{structure}}><a href='{{url}}'>{{label}}</a></section>"
 
   function renderTemplate(template, line) {
     return template.replace(/\{\{(\w+)\}\}/g, function(fullMatch, parensMatch) {
@@ -69,8 +73,11 @@
     initialize: function() {
       var lines = _.map(configuration.split("\n"), function(line) {
         var components = line.split(", ");
+        var structure = components[0].trim();
+        var nesting = structure.length;
         return {
-          structure: components[0],
+          structure: structure,
+          nesting: nesting - 1,
           label: components[1],
           url: components[2]
         }

@@ -1,13 +1,16 @@
 .nested-accordion {
+  @padding: 15px;
+  @background: #4d5158;
+
   color: white;
   -webkit-font-smoothing: antialiased;
   width: 600px;
-  background: #4d5158;
+  background: @background;
   box-shadow: 0 4px 40px #70ac77;
 
   section {
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: @padding;
+    padding-bottom: @padding;
     box-shadow: inset 0 -1px #565a60;
     position: relative;
     text-indent: 1em;
@@ -17,57 +20,43 @@
     display: none;
   }
 
-  .folder > section::before {
-    content: "\f105";
-    font: normal normal normal 14px/1 FontAwesome;
-    display: inline-block;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
+  .fa-angle-right {
     font-size: 1.5em;
-    position: absolute;
-    left: 0;
-    top: 20px;
-    transform-origin: 55% 84%;
     transition: transform .1s;
+    transform: translateY(2px) translateX(-7px);
   }
 
-  .folder.opened > section::before {
-    transform: translateY(-13px) rotateZ(90deg);
+  .folder.opened > .folder-label > .fa-angle-right {
+    transform: rotateZ(90deg) translateX(-5px) translateY(-3px);
   }
 
-  .children {
-    padding-left: 24px;
+  .folder {
+    position: relative;
   }
 
-  .folder > section {
-    padding-left: 24px;
+  .folder-arrow {
+    position: absolute;
   }
 
-  // .nested-accordion > section, .nested-accordion > .folder > section {
-  //   padding-left: 24px;
-  //   background-color: rgba(86, 90, 96, 1);
-  // }
+  .nesting-1 {
+    padding-left: @padding * 1;
+    background: darken(@background, 5%);
+  }
 
-  // .children section {
-  //   padding-left: 48px;
-  //   background-color: rgba(86, 90, 96, .5);
-  // }
+  .nesting-2 {
+    padding-left: @padding * 2;
+    background: darken(@background, 10%);
+  }
 
-  // .children section::before {
-  //   padding-left: 24px;
-  //   transform-origin: 75% 84%;
-  // }
+  .nesting-3 {
+    padding-left: @padding * 3;
+    background: darken(@background, 15%);
+  }
 
-  // .children .children section {
-  //   padding-left: 72px;
-  //   background-color: rgba(86, 90, 96, .1);
-  // }
-
-  // .children .children section::before {
-  //   padding-left: 48px;
-  //   transform-origin: 85% 84%;
-  // }
+  .nesting-4 {
+    padding-left: @padding * 4;
+    background: darken(@background, 20%);
+  }
 
   a {
     color: white;
