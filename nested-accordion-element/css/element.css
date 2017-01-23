@@ -5,12 +5,10 @@
   color: white;
   -webkit-font-smoothing: antialiased;
   max-width: 400px;
-  background: @background;
 
   section {
     padding-top: @verticalPadding;
     padding-bottom: @verticalPadding;
-    box-shadow: inset 0 -1px #565a60;
     position: relative;
   }
 
@@ -44,6 +42,8 @@
 
   .nesting-0 {
     padding-left: @sidePadding + @sidePaddingStep;
+    background: @background;
+    box-shadow: inset 0 -1px lighten(@background, 3%);
     &.current { padding-left: @sidePadding + @sidePaddingStep - @currentWidth; }
 
     > .folder-arrow {
@@ -54,6 +54,7 @@
   .nesting-1 {
     padding-left: @sidePadding + @sidePaddingStep * 2;
     background: darken(@background, 6%);
+    box-shadow: inset 0 -1px darken(@background, 3%);
     &.current { padding-left: @sidePadding + @sidePaddingStep * 2 - @currentWidth; }
 
     > .folder-arrow {
@@ -64,6 +65,7 @@
   .nesting-2 {
     padding-left: @sidePadding + @sidePaddingStep * 3;
     background: darken(@background, 10%);
+    box-shadow: inset 0 -1px darken(@background, 5%);
     &.current { padding-left: @sidePadding + @sidePaddingStep * 3 - @currentWidth; }
 
     > .folder-arrow {
@@ -74,6 +76,7 @@
   .nesting-3 {
     padding-left: @sidePadding + @sidePaddingStep * 4;
     background: darken(@background, 13%);
+    box-shadow: inset 0 -1px darken(@background, 8%);
     &.current { padding-left: @sidePadding + @sidePaddingStep * 4 - @currentWidth; }
     > .folder-arrow {
       left: @sidePadding + @sidePaddingStep * 4 + @arrowLeftOffset;
@@ -84,6 +87,7 @@
     padding-left: @sidePadding + @sidePaddingStep * 5;
     &.current { padding-left: @sidePadding + @sidePaddingStep * 5 - @currentWidth; }
     background: darken(@background, 15%);
+    box-shadow: inset 0 -1px darken(@background, 10%);
     > .folder-arrow {
       left: @sidePadding + @sidePaddingStep * 5 + @arrowLeftOffset;
     }
