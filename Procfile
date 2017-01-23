@@ -1,2 +1,2 @@
 serve: python -m SimpleHTTPServer
-watch: wach "reload-tab localhost:8000"
+watch: wach "chromix-too reload localhost:8000"
