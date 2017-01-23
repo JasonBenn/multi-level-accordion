@@ -5,6 +5,7 @@
   color: white;
   -webkit-font-smoothing: antialiased;
   max-width: 400px;
+  line-height: 1.5;
 
   section {
     padding-top: @verticalPadding;
