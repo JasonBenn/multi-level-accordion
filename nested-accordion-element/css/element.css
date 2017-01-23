@@ -19,7 +19,7 @@
   }
 
   .folder.opened > .folder-label > .fa-angle-right {
-    transform: rotateZ(90deg);
+    transform: rotateZ(90deg) translateX(2px);
   }
 
   .folder-label {
@@ -28,13 +28,13 @@
 
   .folder-arrow {
     position: absolute;
-    top: 12px;
+    top: 13px;
   }
 
-  @currentWidth: 5px;
+  @highlightWidth: 5px;
 
   .current {
-    border-left: inset #EE802B @currentWidth;
+    border-left: inset #EE802B @highlightWidth;
   }
 
   @sidePadding: 14px;
@@ -45,7 +45,7 @@
     padding-left: @sidePadding + @sidePaddingStep;
     background: @background;
     box-shadow: inset 0 -1px lighten(@background, 3%);
-    &.current { padding-left: @sidePadding + @sidePaddingStep - @currentWidth; }
+    &.current { padding-left: @sidePadding + @sidePaddingStep - @highlightWidth; }
 
     > .folder-arrow {
       left: @sidePadding + @sidePaddingStep + @arrowLeftOffset;
@@ -56,7 +56,7 @@
     padding-left: @sidePadding + @sidePaddingStep * 2;
     background: darken(@background, 6%);
     box-shadow: inset 0 -1px darken(@background, 3%);
-    &.current { padding-left: @sidePadding + @sidePaddingStep * 2 - @currentWidth; }
+    &.current { padding-left: @sidePadding + @sidePaddingStep * 2 - @highlightWidth; }
 
     > .folder-arrow {
       left: @sidePadding + @sidePaddingStep * 2 + @arrowLeftOffset;
@@ -67,7 +67,7 @@
     padding-left: @sidePadding + @sidePaddingStep * 3;
     background: darken(@background, 10%);
     box-shadow: inset 0 -1px darken(@background, 5%);
-    &.current { padding-left: @sidePadding + @sidePaddingStep * 3 - @currentWidth; }
+    &.current { padding-left: @sidePadding + @sidePaddingStep * 3 - @highlightWidth; }
 
     > .folder-arrow {
       left: @sidePadding + @sidePaddingStep * 3 + @arrowLeftOffset;
@@ -78,7 +78,7 @@
     padding-left: @sidePadding + @sidePaddingStep * 4;
     background: darken(@background, 13%);
     box-shadow: inset 0 -1px darken(@background, 8%);
-    &.current { padding-left: @sidePadding + @sidePaddingStep * 4 - @currentWidth; }
+    &.current { padding-left: @sidePadding + @sidePaddingStep * 4 - @highlightWidth; }
     > .folder-arrow {
       left: @sidePadding + @sidePaddingStep * 4 + @arrowLeftOffset;
     }
@@ -86,7 +86,7 @@
 
   .nesting-4 {
     padding-left: @sidePadding + @sidePaddingStep * 5;
-    &.current { padding-left: @sidePadding + @sidePaddingStep * 5 - @currentWidth; }
+    &.current { padding-left: @sidePadding + @sidePaddingStep * 5 - @highlightWidth; }
     background: darken(@background, 15%);
     box-shadow: inset 0 -1px darken(@background, 10%);
     > .folder-arrow {
