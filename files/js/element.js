@@ -18,63 +18,11 @@
     4b, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act\n\
     5, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act"
 
-  var FOLDER_TEMPLATE = "\
-    <div class='folder' data-structure={{structure}}>\
-      <section class='folder-label nesting-{{nesting}}'>\
-        <i class='fa fa-angle-right folder-arrow' aria-hidden='true'></i>\
-        {{label}}\
-      </section>\
-      <div class='children' style='display: none;'>\
-      </div>\
-    </div>"
-
-  var LINK_TEMPLATE = "\
-    <section class='nesting-{{nesting}}' {{structure}}><a href='{{url}}'>{{label}}</a></section>"
-
-  function renderTemplate(template, line) {
-    return template.replace(/\{\{(\w+)\}\}/g, function(fullMatch, parensMatch) {
-      return line[parensMatch];
-    });
-  }
-
-  function getParentStructure(structure) {
-    var structure = structure.match(/[a-zA-Z]+|[0-9]+/g);
-    var parentStructure = structure.slice(0, -1).join("");
-    return parentStructure;
-  }
-
-  function insertLine(line) {
-    var parentStructure = getParentStructure(line.structure);
-    if (!parentStructure.length) {
-      $accordion.append(renderLine(line));
-    } else {
-      var selector = '[data-structure=' + parentStructure + '] > .children'
-      $accordion.find(selector).append(renderLine(line));
-    }
-  }
-
-  function renderLine(line) {
-    if (line.url) {
-      return renderTemplate(LINK_TEMPLATE, line);
-    } else {
-      return renderTemplate(FOLDER_TEMPLATE, line);
-    }
-  }
-
   var $accordion = $('<div class="nested-accordion"></div>');
 
-  function openToCurrentUrl(accordion) {
-    // TODO: use location.pathname
-    var $currentLink = $accordion.find("[href='" + "/identifying-partners" + "']");
-    $currentLink.closest('section').addClass('current');
-    var $currentLink = $accordion.find("[href='" + "/effectiveness" + "']");
-    $currentLink.closest('section').addClass('current');
-    $currentLink.parentsUntil('.nested-accordion', '.folder').addClass('opened');
-    $currentLink.parentsUntil('.nested-accordion', '.children').toggle();
-  }
-
   var NestedAccordion = PlatformElement.extend({
-    initialize: function() {
+    initialize: function(options) {
+      _.extend(this, options);
       var lines = _.map(configuration.split("\n"), function(line) {
         var components = line.split(", ");
         var structure = components[0].trim();
@@ -87,8 +35,8 @@
         }
       });
 
-      _.each(lines, insertLine);
-      openToCurrentUrl($accordion)
+      _.each(lines, this.insertLine.bind(this));
+      this.openToCurrentUrl($accordion)
       this.$el.append($accordion);
 
       $('.folder').click(function(e) {
@@ -96,6 +44,63 @@
         $(this).children('.children').slideToggle();
         $(this).toggleClass('opened');
       });
+    },
+
+    linkTemplate: function() {
+      return "<section class='nesting-{{nesting}}' {{structure}}><a href='{{url}}'>{{label}}</a></section>"
+    },
+
+    renderTemplate: function(template, line) {
+      return template.replace(/\{\{(\w+)\}\}/g, function(fullMatch, parensMatch) {
+        return line[parensMatch];
+      });
+    },
+
+    folderTemplate: function() {
+      console.log(this);
+      return "\
+      <div class='folder' data-structure={{structure}}>\
+        <section class='folder-label nesting-{{nesting}}'>\
+          <img src='"+this.assets_path+"angle-right.svg' class='angle-right'>\
+          {{label}}\
+        </section>\
+        <div class='children' style='display: none;'>\
+        </div>\
+      </div>"
+    },
+
+    getParentStructure: function(structure) {
+      var structure = structure.match(/[a-zA-Z]+|[0-9]+/g);
+      var parentStructure = structure.slice(0, -1).join("");
+      return parentStructure;
+    },
+
+    insertLine: function(line) {
+      var parentStructure = this.getParentStructure(line.structure);
+      if (!parentStructure.length) {
+        $accordion.append(this.renderLine(line));
+      } else {
+        var selector = '[data-structure=' + parentStructure + '] > .children'
+        $accordion.find(selector).append(this.renderLine(line));
+      }
+    },
+
+    renderLine: function(line) {
+      if (line.url) {
+        return this.renderTemplate(this.linkTemplate(), line);
+      } else {
+        return this.renderTemplate(this.folderTemplate(), line);
+      }
+    },
+
+    openToCurrentUrl: function(accordion) {
+      // TODO: use location.pathname
+      var $currentLink = $accordion.find("[href='" + "/identifying-partners" + "']");
+      $currentLink.closest('section').addClass('current');
+      var $currentLink = $accordion.find("[href='" + "/effectiveness" + "']");
+      $currentLink.closest('section').addClass('current');
+      $currentLink.parentsUntil('.nested-accordion', '.folder').addClass('opened');
+      $currentLink.parentsUntil('.nested-accordion', '.children').toggle();
     }
   });
 

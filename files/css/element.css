@@ -10,15 +10,17 @@
   section {
     padding-top: @verticalPadding;
     padding-bottom: @verticalPadding;
+    padding-right: @verticalPadding;
     position: relative;
   }
 
-  .fa-angle-right {
-    font-size: 1.5em;
+  .angle-right {
+    height: 1em;
+    fill: white;
     transition: transform .1s;
   }
 
-  .folder.opened > .folder-label > .fa-angle-right {
+  .folder.opened > .folder-label > .angle-right {
     transform: rotateZ(90deg) translateX(2px);
   }
 
