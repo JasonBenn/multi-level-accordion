@@ -14,23 +14,24 @@
     position: relative;
   }
 
-  .angle-right {
+  .folder-arrow {
     height: 1em;
     fill: white;
     transition: transform .1s;
   }
 
-  .folder.opened > .folder-label > .angle-right {
-    transform: rotateZ(90deg) translateX(2px);
+  .folder.opened > .folder-label > .folder-arrow {
+    transform: rotateZ(90deg);
   }
 
   .folder-label {
     position: relative;
+    display: flex;
+    align-items: center;
   }
 
   .folder-arrow {
     position: absolute;
-    top: 13px;
   }
 
   @highlightWidth: 5px;
@@ -43,7 +44,7 @@
 
   @sidePadding: 14px;
   @sidePaddingStep: 15px;
-  @arrowLeftOffset: -15px;
+  @arrowLeftOffset: -20px;
 
   .nesting-0 {
     padding-left: @sidePadding + @sidePaddingStep;

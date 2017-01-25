@@ -61,7 +61,7 @@
       return "\
       <div class='folder' data-structure={{structure}}>\
         <section class='folder-label nesting-{{nesting}}'>\
-          <img src='"+this.assets_path+"angle-right.svg' class='angle-right'>\
+          <img src='"+this.assets_path+"angle-right.svg' class='folder-arrow'>\
           {{label}}\
         </section>\
         <div class='children' style='display: none;'>\
