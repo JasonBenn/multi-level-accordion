@@ -33,8 +33,10 @@
 
   @highlightWidth: 5px;
 
+  @orange: #ee802c;
   .current {
-    border-left: inset #EE802B @highlightWidth;
+    border-left: inset @orange @highlightWidth;
+    font-weight: bold;
   }
 
   @sidePadding: 14px;
