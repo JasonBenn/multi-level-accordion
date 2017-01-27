@@ -1,16 +1,27 @@
-.nested-accordion {
-  @verticalPadding: 15px;
-  @background: #4d5158;
+/* Variables from settings */
+// @highlightColor: #ee802c;
+// @highlightWidth: 5;
+// @backgroundColor0: #545960;
+// @backgroundColor1: #464950;
+// @backgroundColor2: #35383d;
+// @backgroundColor3: #2e3035;
+// @verticalPadding: 15;
+// @leftPadding: 14;
+// @leftPaddingStep: 15;
+// @arrowLeftOffset: -20;
+// @arrowTopOffset: 17;
+// @minScreenWidth: 400;
 
+.nested-accordion {
   color: white;
   -webkit-font-smoothing: antialiased;
   max-width: 400px;
   line-height: 1.5;
 
   section {
-    padding-top: @verticalPadding;
-    padding-bottom: @verticalPadding;
-    padding-right: @verticalPadding;
+    padding-top: unit(@verticalPadding, px);
+    padding-bottom: unit(@verticalPadding, px);
+    padding-right: unit(@verticalPadding, px);
     position: relative;
   }
 
@@ -18,6 +29,7 @@
     height: 1em;
     fill: white;
     transition: transform .1s;
+    top: unit(@arrowTopOffset, px);
   }
 
   .folder.opened > .folder-label > .folder-arrow {
@@ -34,68 +46,71 @@
     position: absolute;
   }
 
-  @highlightWidth: 5px;
-
-  @orange: #ee802c;
   .current {
-    border-left: inset @orange @highlightWidth;
+    border-left: inset @highlightColor unit(@highlightWidth, px);
     font-weight: bold;
   }
 
-  @sidePadding: 14px;
-  @sidePaddingStep: 15px;
-  @arrowLeftOffset: -20px;
-
   .nesting-0 {
-    padding-left: @sidePadding + @sidePaddingStep;
-    background: @background;
-    box-shadow: inset 0 -1px lighten(@background, 3%);
-    &.current { padding-left: @sidePadding + @sidePaddingStep - @highlightWidth; }
+    padding-left: unit(@leftPadding + @leftPaddingStep, px);
+    background: @backgroundColor0;
+    box-shadow: inset 0 -1px lighten(@backgroundColor0, 3%);
+    &.current {
+      padding-left: unit(@leftPadding + @leftPaddingStep - @highlightWidth, px);
+    }
 
     > .folder-arrow {
-      left: @sidePadding + @sidePaddingStep + @arrowLeftOffset;
+      left: unit(@leftPadding + @leftPaddingStep + @arrowLeftOffset, px);
     }
   }
 
   .nesting-1 {
-    padding-left: @sidePadding + @sidePaddingStep * 2;
-    background: darken(@background, 6%);
-    box-shadow: inset 0 -1px darken(@background, 3%);
-    &.current { padding-left: @sidePadding + @sidePaddingStep * 2 - @highlightWidth; }
+    padding-left: unit(@leftPadding + @leftPaddingStep * 2, px);
+    background: @backgroundColor1;
+    box-shadow: inset 0 -1px darken(@backgroundColor1, 3%);
+    &.current {
+      padding-left: unit(@leftPadding + @leftPaddingStep * 2 - @highlightWidth, px);
+    }
 
     > .folder-arrow {
-      left: @sidePadding + @sidePaddingStep * 2 + @arrowLeftOffset;
+      left: unit(@leftPadding + @leftPaddingStep * 2 + @arrowLeftOffset, px);
     }
   }
 
   .nesting-2 {
-    padding-left: @sidePadding + @sidePaddingStep * 3;
-    background: darken(@background, 10%);
-    box-shadow: inset 0 -1px darken(@background, 5%);
-    &.current { padding-left: @sidePadding + @sidePaddingStep * 3 - @highlightWidth; }
+    padding-left: unit(@leftPadding + @leftPaddingStep * 3, px);
+    background: @backgroundColor2;
+    box-shadow: inset 0 -1px darken(@backgroundColor2, 3%);
+    &.current {
+      padding-left: unit(@leftPadding + @leftPaddingStep * 3 - @highlightWidth, px);
+    }
 
     > .folder-arrow {
-      left: @sidePadding + @sidePaddingStep * 3 + @arrowLeftOffset;
+      left: unit(@leftPadding + @leftPaddingStep * 3 + @arrowLeftOffset, px);
     }
   }
 
   .nesting-3 {
-    padding-left: @sidePadding + @sidePaddingStep * 4;
-    background: darken(@background, 13%);
-    box-shadow: inset 0 -1px darken(@background, 8%);
-    &.current { padding-left: @sidePadding + @sidePaddingStep * 4 - @highlightWidth; }
+    padding-left: unit(@leftPadding + @leftPaddingStep * 4, px);
+    background: @backgroundColor3;
+    box-shadow: inset 0 -1px darken(@backgroundColor3, 3%);
+    &.current {
+      padding-left: unit(@leftPadding + @leftPaddingStep * 4 - @highlightWidth, px);
+    }
     > .folder-arrow {
-      left: @sidePadding + @sidePaddingStep * 4 + @arrowLeftOffset;
+      left: unit(@leftPadding + @leftPaddingStep * 4 + @arrowLeftOffset, px);
     }
   }
 
   .nesting-4 {
-    padding-left: @sidePadding + @sidePaddingStep * 5;
-    &.current { padding-left: @sidePadding + @sidePaddingStep * 5 - @highlightWidth; }
-    background: darken(@background, 15%);
-    box-shadow: inset 0 -1px darken(@background, 10%);
+    padding-left: unit(@leftPadding + @leftPaddingStep * 5, px);
+    &.current {
+      padding-left: unit(@leftPadding + @leftPaddingStep * 5 - @highlightWidth, px);
+    }
+    background: darken(@backgroundColor0, 15%);
+    box-shadow: inset 0 -1px darken(@backgroundColor0, 10%);
     > .folder-arrow {
-      left: @sidePadding + @sidePaddingStep * 5 + @arrowLeftOffset;
+      left: unit(@leftPadding + @leftPaddingStep * 5 + @arrowLeftOffset, px);
     }
   }
 
@@ -104,7 +119,7 @@
     text-decoration: none;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: unit(@minScreenWidth, px)) {
     display: none;
   }
 }

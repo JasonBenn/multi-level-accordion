@@ -16,10 +16,76 @@
             "label": "Settings",
             "properties": [
               {
+                "name": "highlightColor",
+                "label": "Highlight color",
+                "type": "color",
+                "default": "#ee802c"
+              },
+              {
+                "name": "highlightWidth",
+                "label": "Width of highlight",
+                "type": "int",
+                "default": 5
+              },
+              {
+                "name": "backgroundColor0",
+                "label": "Background color, top level",
+                "type": "color",
+                "default": "#545960"
+              },
+              {
+                "name": "backgroundColor1",
+                "label": "BG color, 1st level",
+                "type": "color",
+                "default": "#464950"
+              },
+              {
+                "name": "backgroundColor2",
+                "label": "BG color, 2nd level",
+                "type": "color",
+                "default": "#35383d"
+              },
+              {
+                "name": "backgroundColor3",
+                "label": "BG color, 3rd level",
+                "type": "color",
+                "default": "#2e3035"
+              },
+              {
+                "name": "verticalPadding",
+                "label": "Vertical padding",
+                "type": "int",
+                "default": 15
+              },
+              {
+                "name": "leftPadding",
+                "label": "Left padding",
+                "type": "int",
+                "default": 14
+              },
+              {
+                "name": "leftPaddingStep",
+                "label": "Left padding step",
+                "type": "int",
+                "default": 15
+              },
+              {
+                "name": "arrowLeftOffset",
+                "label": "Arrow left offset",
+                "type": "int",
+                "default": -20
+              },
+              {
                 "name": "arrowTopOffset",
-                "label": "Arrow Offset from Line Top",
+                "label": "Arrow vertical position",
                 "type": "int",
                 "default": 17
+              },
+              {
+                "name": "minScreenWidth",
+                "label": "Min screen width",
+                "type": "int",
+                "default": 400
               },
               {
                 "label": "Structure",
