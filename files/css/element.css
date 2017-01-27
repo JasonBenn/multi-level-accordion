@@ -5,12 +5,21 @@
 // @backgroundColor1: #464950;
 // @backgroundColor2: #35383d;
 // @backgroundColor3: #2e3035;
+// @textColor0: white;
+// @textColor1: white;
+// @textColor2: white;
+// @textColor3: white;
 // @verticalPadding: 15;
 // @leftPadding: 14;
 // @leftPaddingStep: 15;
 // @arrowLeftOffset: -20;
 // @arrowTopOffset: 17;
 // @minScreenWidth: 400;
+// @hoverColor0: green;
+// @hoverColor1: green;
+// @hoverColor2: green;
+// @hoverColor3: green;
+// @hoverTransition: 0.2;
 
 .nested-accordion {
   color: white;
@@ -23,6 +32,8 @@
     padding-bottom: unit(@verticalPadding, px);
     padding-right: unit(@verticalPadding, px);
     position: relative;
+    cursor: pointer;
+    transition: unit(@hoverTransition, s) background;
   }
 
   .folder-arrow {
@@ -54,6 +65,8 @@
   .nesting-0 {
     padding-left: unit(@leftPadding + @leftPaddingStep, px);
     background: @backgroundColor0;
+    &:hover { background: @hoverColor0; }
+    color: @textColor0;
     box-shadow: inset 0 -1px lighten(@backgroundColor0, 3%);
     &.current {
       padding-left: unit(@leftPadding + @leftPaddingStep - @highlightWidth, px);
@@ -67,6 +80,8 @@
   .nesting-1 {
     padding-left: unit(@leftPadding + @leftPaddingStep * 2, px);
     background: @backgroundColor1;
+    &:hover { background: @hoverColor1; }
+    color: @textColor1;
     box-shadow: inset 0 -1px darken(@backgroundColor1, 3%);
     &.current {
       padding-left: unit(@leftPadding + @leftPaddingStep * 2 - @highlightWidth, px);
@@ -80,6 +95,8 @@
   .nesting-2 {
     padding-left: unit(@leftPadding + @leftPaddingStep * 3, px);
     background: @backgroundColor2;
+    &:hover { background: @hoverColor2; }
+    color: @textColor2;
     box-shadow: inset 0 -1px darken(@backgroundColor2, 3%);
     &.current {
       padding-left: unit(@leftPadding + @leftPaddingStep * 3 - @highlightWidth, px);
@@ -93,6 +110,8 @@
   .nesting-3 {
     padding-left: unit(@leftPadding + @leftPaddingStep * 4, px);
     background: @backgroundColor3;
+    &:hover { background: @hoverColor3; }
+    color: @textColor3;
     box-shadow: inset 0 -1px darken(@backgroundColor3, 3%);
     &.current {
       padding-left: unit(@leftPadding + @leftPaddingStep * 4 - @highlightWidth, px);
@@ -115,7 +134,7 @@
   }
 
   a {
-    color: white;
+    color: inherit;
     text-decoration: none;
   }
 

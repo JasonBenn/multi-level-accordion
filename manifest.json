@@ -16,6 +16,12 @@
             "label": "Settings",
             "properties": [
               {
+                "name": "forceOpenTo",
+                "label": "Force open to URL (optional)",
+                "type": "string",
+                "default": ""
+              },
+              {
                 "name": "highlightColor",
                 "label": "Highlight color",
                 "type": "color",
@@ -34,8 +40,32 @@
                 "default": "#545960"
               },
               {
+                "name": "textColor0",
+                "label": "Text color, top level",
+                "type": "color",
+                "default": "#FFFFFF"
+              },
+              {
+                "name": "hoverColor0",
+                "label": "Hover color, top level",
+                "type": "color",
+                "default": "#545960"
+              },
+              {
                 "name": "backgroundColor1",
                 "label": "BG color, 1st level",
+                "type": "color",
+                "default": "#464950"
+              },
+              {
+                "name": "textColor1",
+                "label": "Text color, 1st level",
+                "type": "color",
+                "default": "#FFFFFF"
+              },
+              {
+                "name": "hoverColor1",
+                "label": "Hover color, 1st level",
                 "type": "color",
                 "default": "#464950"
               },
@@ -46,10 +76,40 @@
                 "default": "#35383d"
               },
               {
+                "name": "textColor2",
+                "label": "Text color, 2nd level",
+                "type": "color",
+                "default": "#FFFFFF"
+              },
+              {
+                "name": "hoverColor2",
+                "label": "Hover color, 2nd level",
+                "type": "color",
+                "default": "#35383d"
+              },
+              {
                 "name": "backgroundColor3",
                 "label": "BG color, 3rd level",
                 "type": "color",
                 "default": "#2e3035"
+              },
+              {
+                "name": "textColor3",
+                "label": "Text color, 3rd level",
+                "type": "color",
+                "default": "#FFFFFF"
+              },
+              {
+                "name": "hoverColor3",
+                "label": "Hover color, 3rd level",
+                "type": "color",
+                "default": "#2e3035"
+              },
+              {
+                "name": "hoverTransition",
+                "label": "Background color transition time",
+                "type": "string",
+                "default": "0.2"
               },
               {
                 "name": "verticalPadding",
