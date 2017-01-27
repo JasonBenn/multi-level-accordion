@@ -2,27 +2,48 @@
   "manifest": "1",
   "client_id": "123456",
   "version": "1.0.1",
-  "elements": [{
-    "name": "Nested Accordion",
-    "path": "files",
-    "version": "1.0.0",
-    "settings": {
-      "config": {
-        "autopop": true
+  "elements": [
+    {
+      "name": "Nested Accordion",
+      "path": "files",
+      "version": "1.0.0",
+      "settings": {
+        "config": {},
+        "properties": [
+          {
+            "type": "group",
+            "name": "settings",
+            "label": "Settings",
+            "properties": [
+              {
+                "name": "arrowTopOffset",
+                "label": "Arrow Offset from Line Top",
+                "type": "int",
+                "default": 17
+              },
+              {
+                "label": "Structure",
+                "name": "structure",
+                "type": "text",
+                "tooltip": "Specify the structure, visible text, and (optionally) the URL for each line, separated by commas.",
+                "default": "1, Home, /\n2, Roadmap\n2a, Getting Started\n2a1, Scoping, /scoping"
+              }
+            ]
+          }
+        ]
       },
-      "properties": [
-        {
-          "name": "settings",
-          "label": "Settings",
-          "type": "group",
-          "properties": [{
-            "name": "structure",
-            "label": "Structure",
-            "tooltip": "Specify the structure, visible text, and (optionally) the URL for each line, separated by commas.",
-            "type": "text"
-          }]
+        "tutorial": {
+          "introduction": "Nested Accordion creates a tree of items that individually expand on click to display content.",
+          "type": "steps",
+          "content": [
+            "Determine the structure of your accordion. Each line of your accordion, whether that line is a clickable link or a folder containing links, should have a line in the Structure input.",
+            "Each line has 2 or 3 parts: Position, Text, and (optionally) a URL. The Text component is what will be displayed to the user, and the URL is where a user is taken when they click that line in the accordion.",
+            "The Position component is what describes the placement of the line, and should be an alternating sequence of numbers and letters, starting with '1'. Lines that are children of 1 should be specified as: 1a, 1b, etc, and the children of 1a would be 1a1, 1a2, etc.",
+            "To describe a folder line, specify Position and Text (e.g., '4a, Scoping'). The arrow icon will appear even if there are no children (i.e., no lines with Position 4a1, 4a2, etc).",
+            "To describe a link, specify Position, Text, and URL (e.g., '3, Scoping, /scoping')."
+          ],
+          "autopop": true
         }
-      ]
     }
-  }]
+  ]
 }

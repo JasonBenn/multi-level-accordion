@@ -24,9 +24,26 @@
   </style>
   <script>
     $(document).ready(function() {
+      var settings = new Backbone.Model();
+      settings.set({ structure: "\
+          1, Home\n\
+          2, Roadmap\n\
+          2a, Getting Started\n\
+          2a1, Scoping, /scoping\n\
+          2a2, Identifying Partners, /identifying-partners\n\
+          2a3, Building Consensus, /building-consensus\n\
+          2a4, Making Decisions\n\
+          2a4a, Effectiveness of Anticipated Communications Options, /effectiveness\n\
+          3, Legal Factors\n\
+          4, Funding\n\
+          4a, EPA Drinking Water State Revolving Loan Fund, /epa-load-fund\n\
+          4b, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act\n\
+          5, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act" });
+
       var nestedAccordion =new NestedAccordion({
         el: 'body',
-        assets_path: "files/assets/"
+        assets_path: "files/assets/",
+        settings: settings
       });
       console.log(nestedAccordion);
       nestedAccordion.render();

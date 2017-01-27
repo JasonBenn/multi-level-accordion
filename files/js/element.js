@@ -3,27 +3,29 @@
  * @type {PlatformElement}
  */
 (function() {
-  var configuration = "\
-    1, Home\n\
-    2, Roadmap\n\
-    2a, Getting Started\n\
-    2a1, Scoping, /scoping\n\
-    2a2, Identifying Partners, /identifying-partners\n\
-    2a3, Building Consensus, /building-consensus\n\
-    2a4, Making Decisions\n\
-    2a4a, Effectiveness of Anticipated Communications Options, /effectiveness\n\
-    3, Legal Factors\n\
-    4, Funding\n\
-    4a, EPA Drinking Water State Revolving Loan Fund, /epa-load-fund\n\
-    4b, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act\n\
-    5, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act"
+  var PLACEHOLDER = "\
+    1, Placeholder\n\
+    1a, Placeholder\n\
+    1a1, Placeholder, #\n\
+    1a2, Placeholder, #\n\
+    2, Placeholder\n\
+    2a, Placeholder, #\n\
+    2b, Placeholder, #\n\
+    3, Placeholder\n\
+    3a, Placeholder, #\n\
+    "
 
   var $accordion = $('<div class="nested-accordion"></div>');
+
+  function splitClean(multilineString) {
+    return multilineString.split("\n").map(function(line) { return line.trim() }).filter(_.identity);
+  }
 
   var NestedAccordion = PlatformElement.extend({
     initialize: function(options) {
       _.extend(this, options);
-      var lines = _.map(configuration.split("\n"), function(line) {
+      var structureInput = (this.settings && this.settings.get("structure")) || PLACEHOLDER;
+      var lines = _.map(splitClean(structureInput), function(line) {
         var components = line.split(", ");
         var structure = components[0].trim();
         var nesting = structure.length - 1;
@@ -57,7 +59,6 @@
     },
 
     folderTemplate: function() {
-      console.log(this);
       return "\
       <div class='folder' data-structure={{structure}}>\
         <section class='folder-label nesting-{{nesting}}'>\
@@ -69,8 +70,8 @@
       </div>"
     },
 
-    getParentStructure: function(structure) {
-      var structure = structure.match(/[a-zA-Z]+|[0-9]+/g);
+    getParentStructure: function(lineStructure) {
+      var structure = lineStructure.match(/[a-zA-Z]+|[0-9]+/g);
       var parentStructure = structure.slice(0, -1).join("");
       return parentStructure;
     },
