@@ -33,7 +33,15 @@
           structure: structure,
           nesting: nesting,
           label: components[1],
-          url: components[2]
+          url: components[2] || ""
+        }
+      });
+
+      var allParentStructs = _.pluck(lines, "structure").map(function(s) { return s.slice(0, -1); });
+
+      lines.forEach(function(line) {
+        if (_.contains(allParentStructs, line.structure)) {
+          line.hasChildren = true;
         }
       });
 
@@ -41,10 +49,9 @@
       this.openToCurrentUrl($accordion)
       this.$el.append($accordion);
 
-      $('.folder').click(function(e) {
-        e.stopPropagation();
-        $(this).children('.children').slideToggle();
-        $(this).toggleClass('opened');
+      $('section').click(function(e) {
+        var path = $(e.target).children("a").attr('href');
+        if (path) location.pathname = path;
       });
     },
 
@@ -63,7 +70,7 @@
       <div class='folder' data-structure={{structure}}>\
         <section class='folder-label nesting-{{nesting}}'>\
           <svg class='folder-arrow' fill='#fff' viewBox='200 300 1300 1300' xmlns='http://www.w3.org/2000/svg'><path d='M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z'/></svg>\
-          {{label}}\
+          <a href='{{url}}'>{{label}}</a>\
         </section>\
         <div class='children' style='display: none;'>\
         </div>\
@@ -87,18 +94,23 @@
     },
 
     renderLine: function(line) {
-      if (line.url) {
-        return this.renderTemplate(this.linkTemplate(), line);
-      } else {
+      if (line.hasChildren) {
         return this.renderTemplate(this.folderTemplate(), line);
+      } else {
+        return this.renderTemplate(this.linkTemplate(), line);
       }
     },
 
     openToCurrentUrl: function(accordion) {
-      var $currentLink = $accordion.find("[href='" + location.pathname + "']");
-      $currentLink.closest('section').addClass('current');
-      $currentLink.parentsUntil('.nested-accordion', '.folder').addClass('opened');
-      $currentLink.parentsUntil('.nested-accordion', '.children').toggle();
+      var override = this.settings.get("forceOpenTo");
+      var pathname = override ? override : location.pathname;
+      var $current = $accordion.find("[href='" + pathname + "']");
+      $current.closest('section').addClass('current');
+      $current.parentsUntil('.nested-accordion', '.folder').addClass('opened');
+      $current.parentsUntil('.nested-accordion', '.children').toggle();
+      if ($current.parent(".folder-label")) {
+        $current.closest('.folder').children('.children').toggle();
+      }
     }
   });
 

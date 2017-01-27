@@ -27,8 +27,8 @@
       var settings = new Backbone.Model();
       settings.set({ structure: "\
           1, Home\n\
-          2, Roadmap\n\
-          2a, Getting Started\n\
+          2, Roadmap, /roadmap\n\
+          2a, Getting Started, /started\n\
           2a1, Scoping, /scoping\n\
           2a2, Identifying Partners, /identifying-partners\n\
           2a3, Building Consensus, /building-consensus\n\
@@ -39,6 +39,7 @@
           4a, EPA Drinking Water State Revolving Loan Fund, /epa-load-fund\n\
           4b, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act\n\
           5, EPA Water Infrastructure Finance and Innovation Act, /epa-wifi-act" });
+      settings.set({ forceOpenTo: "/started" })
 
       var nestedAccordion =new NestedAccordion({
         el: 'body',
