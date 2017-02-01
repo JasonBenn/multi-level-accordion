@@ -107,9 +107,9 @@
       var $current = $accordion.find("[href='" + pathname + "']");
       $current.closest('section').addClass('current');
       $current.parentsUntil('.nested-accordion', '.folder').addClass('opened');
-      $current.parentsUntil('.nested-accordion', '.children').toggle();
+      $current.parentsUntil('.nested-accordion', '.children').show();
       if ($current.parent(".folder-label")) {
-        $current.closest('.folder').children('.children').toggle();
+        $current.closest('.folder').children('.children').show();
       }
     }
   });
