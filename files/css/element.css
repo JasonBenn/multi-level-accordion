@@ -1,14 +1,15 @@
 /* Variables from settings */
 // @highlightColor: #ee802c;
+// @highlightBgColor: gray;
 // @highlightWidth: 5;
 // @backgroundColor0: #545960;
 // @backgroundColor1: #464950;
 // @backgroundColor2: #35383d;
 // @backgroundColor3: #2e3035;
 // @textColor0: white;
-// @textColor1: white;
-// @textColor2: white;
-// @textColor3: white;
+// @textColor1: darken(white, 20%);
+// @textColor2: darken(white, 40%);;
+// @textColor3: darken(white, 60%);;
 // @verticalPadding: 15;
 // @leftPadding: 14;
 // @leftPaddingStep: 15;
@@ -20,12 +21,19 @@
 // @hoverColor2: green;
 // @hoverColor3: green;
 // @hoverTransition: 0.2;
+// @borderColor: gray;
+// @borderWidth: 5;
+// @borderStyle: outset;
+// @topFontSize: 15;
+// @innerFontSize: 13;
 
 .nested-accordion {
   color: white;
   -webkit-font-smoothing: antialiased;
   max-width: 400px;
   line-height: 1.5;
+  border: unit(@borderWidth, px) @borderStyle @borderColor;
+  font-size: unit(@topFontSize, px);
 
   section {
     padding-top: unit(@verticalPadding, px);
@@ -57,11 +65,6 @@
     position: absolute;
   }
 
-  .current {
-    border-left: inset @highlightColor unit(@highlightWidth, px);
-    font-weight: bold;
-  }
-
   .nesting-0 {
     padding-left: unit(@leftPadding + @leftPaddingStep, px);
     background: @backgroundColor0;
@@ -73,11 +76,13 @@
     }
 
     > .folder-arrow {
+      fill: @textColor0;
       left: unit(@leftPadding + @leftPaddingStep + @arrowLeftOffset, px);
     }
   }
 
   .nesting-1 {
+    font-size: unit(@innerFontSize, px);
     padding-left: unit(@leftPadding + @leftPaddingStep * 2, px);
     background: @backgroundColor1;
     &:hover { background: @hoverColor1; }
@@ -88,11 +93,13 @@
     }
 
     > .folder-arrow {
+      fill: @textColor1;
       left: unit(@leftPadding + @leftPaddingStep * 2 + @arrowLeftOffset, px);
     }
   }
 
   .nesting-2 {
+    font-size: unit(@innerFontSize, px);
     padding-left: unit(@leftPadding + @leftPaddingStep * 3, px);
     background: @backgroundColor2;
     &:hover { background: @hoverColor2; }
@@ -103,11 +110,13 @@
     }
 
     > .folder-arrow {
+      fill: @textColor2;
       left: unit(@leftPadding + @leftPaddingStep * 3 + @arrowLeftOffset, px);
     }
   }
 
   .nesting-3 {
+    font-size: unit(@innerFontSize, px);
     padding-left: unit(@leftPadding + @leftPaddingStep * 4, px);
     background: @backgroundColor3;
     &:hover { background: @hoverColor3; }
@@ -117,11 +126,13 @@
       padding-left: unit(@leftPadding + @leftPaddingStep * 4 - @highlightWidth, px);
     }
     > .folder-arrow {
+      fill: @textColor3;
       left: unit(@leftPadding + @leftPaddingStep * 4 + @arrowLeftOffset, px);
     }
   }
 
   .nesting-4 {
+    font-size: unit(@innerFontSize, px);
     padding-left: unit(@leftPadding + @leftPaddingStep * 5, px);
     &.current {
       padding-left: unit(@leftPadding + @leftPaddingStep * 5 - @highlightWidth, px);
@@ -136,6 +147,12 @@
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  .current {
+    border: solid @highlightColor unit(@highlightWidth, px);
+    font-weight: bold;
+    background-color: @highlightBgColor;
   }
 
   @media (max-width: unit(@minScreenWidth, px)) {

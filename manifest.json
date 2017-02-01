@@ -28,6 +28,66 @@
                 "default": "#ee802c"
               },
               {
+                "name": "highlightBgColor",
+                "label": "Highlight BG color",
+                "type": "color",
+                "default": "#ee802c"
+              },
+              {
+                "name": "borderColor",
+                "label": "Border color",
+                "type": "color",
+                "default": "#808080"
+              },
+              {
+                "name": "borderWidth",
+                "label": "Border width",
+                "type": "int",
+                "default": 5
+              },
+              {
+                "name": "topFontSize",
+                "label": "Top level font size",
+                "type": "int",
+                "default": 15
+              },
+              {
+                "name": "innerFontSize",
+                "label": "Inner levels font size",
+                "type": "int",
+                "default": 15
+              },
+              {
+                "name": "borderStyle",
+                "label": "Border Style",
+                "type": "select",
+                "default": "solid",
+                "values": [
+                  {
+                    "name": "Solid",
+                    "value": "solid"
+                  },
+                  {
+                    "name": "Inset",
+                    "value": "inset"
+                  },
+                  {
+                    "name": "Outset",
+                    "value": "outset"
+                  },
+                  {
+                    "name": "Ridge",
+                    "value": "ridge"
+                  }
+                ]
+              },
+              {
+                "name": "highlightColor",
+                "label": "Highlight color",
+                "type": "color",
+                "default": "#ee802c"
+              },
+              {
                 "name": "highlightWidth",
                 "label": "Width of highlight",
                 "type": "int",
